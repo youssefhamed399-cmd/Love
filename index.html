@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I LOVE YOU</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>لحبيبتي 💖</title>
     <style>
         * {
             margin: 0;
@@ -13,350 +12,138 @@
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
             color: white;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            font-family: 'Great Vibes', cursive;
-        }
-
-        .screen {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            font-family: Arial, sans-serif;
             text-align: center;
-            width: 100%;
-            height: 100vh;
-            position: relative;
         }
 
-        .active {
-            display: flex;
-        }
-
-        /* شاشة الباسورد */
-        #passwordScreen {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        .password-container {
-            background: rgba(255, 255, 255, 0.1);
+        .container {
+            background: rgba(255,255,255,0.2);
+            padding: 30px;
             border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .password-title {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: white;
-        }
-
-        .password-input {
-            padding: 15px 20px;
-            font-size: 1.2em;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            margin: 20px 0;
-            width: 250px;
-            text-align: center;
-        }
-
-        .password-btn {
-            padding: 12px 30px;
-            font-size: 1.1em;
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .password-btn:hover {
-            background: #ff5252;
-            transform: scale(1.05);
-        }
-
-        /* الشاشة الرئيسية */
-        #mainScreen {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            backdrop-filter: blur(10px);
         }
 
         .love-text {
-            font-size: 6em;
-            font-weight: bold;
-            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
-            margin-bottom: 50px;
-            animation: glow 2s ease-in-out infinite alternate;
-            z-index: 100;
-        }
-
-        .countdown-container {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            z-index: 100;
-        }
-
-        .countdown-title {
-            font-size: 1.8em;
-            margin-bottom: 25px;
-            color: white;
-        }
-
-        .countdown-display {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .countdown-unit {
-            padding: 20px;
-        }
-
-        .countdown-value {
             font-size: 3em;
             font-weight: bold;
-            color: #ffd700;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
         }
 
-        .countdown-label {
-            font-size: 1.2em;
-            color: white;
-            margin-top: 10px;
+        .message {
+            font-size: 1.5em;
+            margin: 20px 0;
         }
 
-        /* القلوب الطائرة */
-        .hearts-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .heart {
-            position: absolute;
+        .hearts {
             font-size: 2em;
-            color: #ff0000;
-            opacity: 0;
-            z-index: 1;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+            margin: 20px 0;
         }
 
-        @keyframes shootHeart {
-            0% {
-                opacity: 1;
-                transform: translateY(100vh) translateX(0px) scale(0.5);
-            }
-            20% {
-                opacity: 1;
-                transform: translateY(70vh) translateX(20px) scale(1.2);
-            }
-            40% {
-                opacity: 1;
-                transform: translateY(40vh) translateX(-15px) scale(1.1);
-            }
-            60% {
-                opacity: 1;
-                transform: translateY(20vh) translateX(10px) scale(0.9);
-            }
-            80% {
-                opacity: 0.8;
-                transform: translateY(5vh) translateX(-5px) scale(0.7);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-50px) translateX(0px) scale(0.5);
-            }
+        .password-section {
+            margin: 20px 0;
         }
 
-        @keyframes glow {
-            from {
-                text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5),
-                           0 0 20px rgba(255, 255, 255, 0.4);
-            }
-            to {
-                text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.6),
-                           0 0 30px rgba(255, 255, 255, 0.6),
-                           0 0 40px rgba(255, 255, 255, 0.4);
-            }
+        input {
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            margin: 10px 0;
+            width: 200px;
         }
 
-        /* شاشة الترحيب */
-        #welcomeScreen {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
-        }
-
-        .welcome-message {
-            font-size: 4em;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            animation: messageFade 5s ease-in-out;
-        }
-
-        .message-1 { animation-delay: 0s; }
-        .message-2 { animation-delay: 5s; }
-        .message-3 { animation-delay: 10s; }
-
-        @keyframes messageFade {
-            0%, 100% { opacity: 0; transform: translateY(30px); }
-            20%, 80% { opacity: 1; transform: translateY(0); }
+        button {
+            padding: 10px 20px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <!-- شاشة الباسورد -->
-    <div id="passwordScreen" class="screen active">
-        <div class="password-container">
-            <div class="password-title">Enter Password</div>
-            <input type="password" class="password-input" placeholder="Password" id="passwordInput">
-            <button class="password-btn" onclick="checkPassword()">Enter</button>
-        </div>
-    </div>
-
-    <!-- شاشة الترحيب -->
-    <div id="welcomeScreen" class="screen">
-        <div class="welcome-message message-1">My Dearest Love 💫</div>
-        <div class="welcome-message message-2">You Complete Me 🌸</div>
-        <div class="welcome-message message-3">Forever Yours 💖</div>
-    </div>
-
-    <!-- الشاشة الرئيسية -->
-    <div id="mainScreen" class="screen">
-        <div class="love-text">I LOVE YOU</div>
+    <div class="container">
+        <div class="love-text">I LOVE YOU 💖</div>
+        <div class="message" id="message">أنتِ حبي وكل شيء</div>
+        <div class="hearts">💖 🌸 💫 🌹</div>
         
-        <div class="countdown-container">
-            <div class="countdown-title">Time Since We Met</div>
-            <div class="countdown-display">
-                <div class="countdown-unit">
-                    <div class="countdown-value" id="days">0</div>
-                    <div class="countdown-label">Days</div>
-                </div>
-                <div class="countdown-unit">
-                    <div class="countdown-value" id="hours">0</div>
-                    <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-unit">
-                    <div class="countdown-value" id="minutes">0</div>
-                    <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-unit">
-                    <div class="countdown-value" id="seconds">0</div>
-                    <div class="countdown-label">Seconds</div>
-                </div>
-            </div>
+        <div class="password-section">
+            <input type="password" id="password" placeholder="أدخل كلمة السر">
+            <button onclick="checkPassword()">دخول</button>
         </div>
-        
-        <div class="hearts-container" id="heartsContainer"></div>
     </div>
 
     <script>
-        const SITE_PASSWORD = "908";
-        const START_DATE = "2025-03-01";
+        // كلمة السر
+        const PASSWORD = "123";
+        
+        // الرسائل الرومانسية
+        const messages = [
+            "أنتِ أجمل ما في حياتي 💫",
+            "كل يوم أحبك أكثر 🌸", 
+            "أنتِ حلمي الذي تحقق 💖",
+            "عمري كله معكِ 🌹"
+        ];
 
         function checkPassword() {
-            const input = document.getElementById('passwordInput').value;
-            if (input === SITE_PASSWORD) {
-                showWelcomeScreen();
+            const input = document.getElementById('password').value;
+            if (input === PASSWORD) {
+                startRomanticMode();
             } else {
-                alert('Incorrect password!');
+                alert("كلمة السر خطأ! حاول مرة أخرى 💕");
             }
         }
 
-        function showWelcomeScreen() {
-            document.getElementById('passwordScreen').classList.remove('active');
-            document.getElementById('welcomeScreen').classList.add('active');
+        function startRomanticMode() {
+            // إخفاء شاشة الدخول
+            document.querySelector('.password-section').style.display = 'none';
             
-            setTimeout(() => {
-                showMainScreen();
-            }, 15000); // 15 ثانية (3 جمل × 5 ثواني)
-        }
-
-        function showMainScreen() {
-            document.getElementById('welcomeScreen').classList.remove('active');
-            document.getElementById('mainScreen').classList.add('active');
-            startCountup();
-            startHeartShooting();
-        }
-
-        function startCountup() {
-            const startDate = new Date(START_DATE);
-            
-            function updateCountup() {
-                const now = new Date();
-                const diffTime = now - startDate;
-                
-                const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
-                
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours;
-                document.getElementById('minutes').textContent = minutes;
-                document.getElementById('seconds').textContent = seconds;
-            }
-            
-            updateCountup();
-            setInterval(updateCountup, 1000);
-        }
-
-        function startHeartShooting() {
-            // إطلاق قلوب بشكل مستمر
+            // تبديل الرسائل
+            let index = 0;
             setInterval(() => {
-                shootHeart();
-            }, 120); // إطلاق قلب كل 120 مللي ثانية - زي الصورة
+                document.getElementById('message').textContent = messages[index];
+                index = (index + 1) % messages.length;
+            }, 3000);
+            
+            // إضافة قلوب طائرة
+            createFlyingHearts();
         }
 
-        function shootHeart() {
-            const container = document.getElementById('heartsContainer');
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤';
-            
-            // وضع عشوائي من الأسفل
-            const startX = Math.random() * window.innerWidth;
-            heart.style.left = startX + 'px';
-            heart.style.bottom = '-50px';
-            
-            // مدة ومتغيرات الحركة
-            const duration = Math.random() * 3 + 2; // بين 2-5 ثواني
-            const horizontalMove = (Math.random() - 0.5) * 100;
-            
-            heart.style.animation = `shootHeart ${duration}s linear forwards`;
-            
-            container.appendChild(heart);
-            
-            // إزالة القلب بعد الإنتهاء
-            setTimeout(() => {
-                if (heart.parentNode) {
-                    heart.parentNode.removeChild(heart);
-                }
-            }, duration * 1000);
+        function createFlyingHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '💖';
+                heart.style.position = 'fixed';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                heart.style.opacity = '0.7';
+                heart.style.animation = `float ${Math.random() * 3 + 2}s linear forwards`;
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }, 500);
         }
 
-        // السماح بالإدخال بالإنتر
-        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
+        // إضافة الحركات
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% { transform: translateY(100vh) rotate(0deg); }
+                100% { transform: translateY(-100px) rotate(360deg); }
             }
-        });
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
