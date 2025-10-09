@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عيد ميلاد سعيد لحبيبتي! 🎂</title>
+    <title>لحبيبتي الغالية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,218 +13,284 @@
         }
 
         body {
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffafaf);
+            background: linear-gradient(135deg, #8A2BE2, #9370DB);
             color: white;
             min-height: 100vh;
-            font-family: 'Arial', sans-serif;
-            text-align: center;
+            font-family: 'Dancing Script', cursive;
             overflow-x: hidden;
+            direction: rtl;
         }
 
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
+        .screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
             padding: 20px;
+            text-align: center;
         }
 
-        .birthday-card {
-            background: rgba(255, 255, 255, 0.2);
+        .active {
+            display: flex;
+        }
+
+        /* شاشة الباسورد */
+        #passwordScreen {
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
+        }
+
+        .password-container {
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 30px;
-            margin: 20px 0;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .birthday-title {
+        .password-title {
             font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #ffd700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+            color: white;
         }
 
-        .name {
-            font-size: 3em;
-            font-weight: bold;
-            margin: 20px 0;
-            color: #fff;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-        }
-
-        .message {
+        .password-input {
+            padding: 15px 20px;
             font-size: 1.2em;
-            line-height: 1.6;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
             margin: 20px 0;
+            width: 250px;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
         }
 
-        .cake {
-            font-size: 4em;
-            margin: 20px 0;
-            animation: bounce 2s infinite;
-        }
-
-        .gift-btn {
-            background: #ff4757;
+        .password-btn {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            background: #ff6b6b;
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .password-btn:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+
+        /* الشاشة الرئيسية */
+        #mainScreen {
+            background: linear-gradient(135deg, #8A2BE2, #9370DB);
+            position: relative;
+        }
+
+        .love-message {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px;
+            max-width: 600px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            line-height: 2;
+        }
+
+        .message-text {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .video-container {
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .video-frame {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .music-controls {
+            margin: 20px 0;
+        }
+
+        .music-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
             border-radius: 25px;
             cursor: pointer;
-            margin: 10px;
+            margin: 0 10px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.1em;
             transition: all 0.3s;
         }
 
-        .gift-btn:hover {
-            transform: scale(1.1);
-            background: #ff3742;
-        }
-
-        .gift-container {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .gift-item {
+        .music-btn:hover {
             background: rgba(255, 255, 255, 0.3);
-            padding: 15px;
-            border-radius: 15px;
-            margin: 10px 0;
-            cursor: pointer;
-            transition: all 0.3s;
+            transform: scale(1.1);
         }
 
-        .gift-item:hover {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        .balloon {
-            position: absolute;
-            font-size: 2em;
-            animation: floatUp 8s linear infinite;
-        }
-
-        .confetti {
+        /* القلوب الطائرة */
+        .hearts {
             position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #ffd700;
-            animation: fall 5s linear infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        .heart {
+            position: absolute;
+            font-size: 1.5em;
+            opacity: 0;
+            animation: float 6s linear forwards;
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); }
-            100% { transform: translateY(-100px) rotate(360deg); }
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(-100px) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
+        @keyframes float {
+            0% {
+                opacity: 1;
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="birthday-card">
-            <div class="birthday-title">🎉 عيد ميلاد سعيد! 🎉</div>
-            <div class="name" id="herName">حبيبتي!</div>
-            <div class="cake">🎂</div>
-            
-            <div class="message">
-                كل عام وأنتِ أغلى ما في حياتي! 
-                أتمنى لكِ يوماً مليئاً بالسعادة والحب. 
-                أنتِ تستحقين كل شيء جميل في هذا العالم! 💖
-            </div>
-
-            <button class="gift-btn" onclick="showGifts()">
-                🎁 افتح هداياك!
-            </button>
-
-            <div class="gift-container" id="giftContainer">
-                <div class="gift-item" onclick="showMessage('virtual flowers')">
-                    💐 باقة ورد افتراضية
-                </div>
-                <div class="gift-item" onclick="showMessage('love letter')">
-                    💌 رسالة حب خاصة
-                </div>
-                <div class="gift-item" onclick="showMessage('song')">
-                    🎵 أغنية مهداة لكِ
-                </div>
-                <div class="gift-item" onclick="showMessage('promise')">
-                    💖 وعد بحب أبدي
-                </div>
-            </div>
+    <!-- شاشة الباسورد -->
+    <div id="passwordScreen" class="screen active">
+        <div class="password-container">
+            <div class="password-title">أدخل كلمة السر</div>
+            <input type="password" class="password-input" placeholder="كلمة السر" id="passwordInput">
+            <button class="password-btn" onclick="checkPassword()">دخول</button>
         </div>
     </div>
 
-    <script>
-        // إنشاء بالونات
-        function createBalloons() {
-            const balloons = ['🎈', '🎈', '🎈', '🎈', '🎈'];
-            balloons.forEach((balloon, index) => {
-                const ball = document.createElement('div');
-                ball.className = 'balloon';
-                ball.textContent = balloon;
-                ball.style.left = (index * 20 + 10) + '%';
-                ball.style.animationDelay = (index * 2) + 's';
-                document.body.appendChild(ball);
-            });
-        }
+    <!-- الشاشة الرئيسية -->
+    <div id="mainScreen" class="screen">
+        <div class="love-message">
+            <div class="message-text">
+                إلى حبيبتي الغالية...<br><br>
+                
+                منذ أن عرفتك، لم تعد الحياة كما كانت.. أصبح لكل لحظة معنى، وكل يوم يحمل في طياته سحراً مختلفاً.<br><br>
 
-        // إنشاء كونفيتي
-        function createConfetti() {
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.animationDelay = Math.random() * 5 + 's';
-                confetti.style.background = getRandomColor();
-                document.body.appendChild(confetti);
+                أنتِ ذلك الشعور الذي لا يمكن وصفه، لكن القلب يعرفه جيداً.. ذلك الهدوء الذي لا يأتي إلا بوجودك، وذلك الأمان الذي لا أشعر به إلا عندما تكونين قريبة.<br><br>
+
+                في عينيك وجدت كل المعاني الجميلة، وفي وجودك اكتشفت معنى الحياة الحقيقية. كل شيء أصبح أجمل لأنكِ جزء منه.<br><br>
+
+                أنتِ الذكرى الجميلة التي لا تنسى، والحاضر الذي أتمسك به، والمستقبل الذي أتطلع إليه بكل شغف.
+            </div>
+        </div>
+
+        <div class="video-container">
+            <iframe 
+                class="video-frame"
+                src="https://www.youtube.com/embed/kPa7bsKwL-c?si=QXw00TcYsHtNDfcv" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="music-controls">
+            <button class="music-btn" onclick="playMusic()">تشغيل الموسيقى 🎵</button>
+            <button class="music-btn" onclick="pauseMusic()">إيقاف الموسيقى ⏸️</button>
+        </div>
+    </div>
+
+    <!-- القلوب الطائرة -->
+    <div class="hearts" id="heartsContainer"></div>
+
+    <!-- الموسيقى -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://www.soundjay.com/misc/sounds/romantic-background-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const CORRECT_PASSWORD = "908";
+        const backgroundMusic = document.getElementById('backgroundMusic');
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            if (input === CORRECT_PASSWORD) {
+                showMainScreen();
+            } else {
+                alert('كلمة السر غير صحيحة!');
             }
         }
 
-        function getRandomColor() {
-            const colors = ['#ff6b6b', '#ffd700', '#74b9ff', '#55efc4', '#fd79a8'];
-            return colors[Math.floor(Math.random() * colors.length)];
+        function showMainScreen() {
+            document.getElementById('passwordScreen').classList.remove('active');
+            document.getElementById('mainScreen').classList.add('active');
+            createHearts();
+            // تشغيل الموسيقى تلقائياً
+            setTimeout(() => {
+                playMusic();
+            }, 2000);
         }
 
-        // عرض الهدايا
-        function showGifts() {
-            document.getElementById('giftContainer').style.display = 'block';
-            createConfetti();
+        function playMusic() {
+            backgroundMusic.play().catch(e => {
+                console.log('المتصفح يطلب تفاعل أولي لتشغيل الصوت');
+            });
         }
 
-        // عرض الرسائل
-        function showMessage(type) {
-            const messages = {
-                'virtual flowers': '💐 هذه الباقة من أجمل الورود أهديها لأسعد إنسانة في حياتي!',
-                'love letter': '💌 حبيبتي... في عيد ميلادك أريد أن أخبرك أن حبي لكِ ينمو كل يوم!',
-                'song': '🎵 هذه الأغنية خاصة بكِ... تذكرني بجمال روحك وطيب قلبك!',
-                'promise': '💖 أعدك بأن أظل بجانبك دائماً وأحبك أكثر كل يوم!'
-            };
+        function pauseMusic() {
+            backgroundMusic.pause();
+        }
+
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            const hearts = ['💖', '💕', '💗', '💓', '💞'];
             
-            alert(messages[type] || '🎂 عيد ميلاد سعيد حبيبتي!');
-            createConfetti();
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                
+                container.appendChild(heart);
+                
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, 6000);
+            }, 500);
         }
 
-        // بدء التأثيرات
+        // السماح بالإدخال بالإنتر
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // قلوب عند التحميل
         window.onload = function() {
-            createBalloons();
-            createConfetti();
-            
-            // اسأل عن اسمها
-            const name = prompt('ما اسم حبيبتك؟') || 'حبيبتي';
-            document.getElementById('herName').textContent = name;
+            createHearts();
         }
-
-        // كونفيتي مستمر
-        setInterval(createConfetti, 3000);
     </script>
 </body>
 </html>
