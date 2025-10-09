@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love 💖 - Dedication Page</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <title>عيد ميلاد سعيد لحبيبتي! 🎂</title>
     <style>
         * {
             margin: 0;
@@ -13,493 +12,218 @@
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffafaf);
             color: white;
             min-height: 100vh;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
             overflow-x: hidden;
         }
 
         .container {
-            max-width: 400px;
+            max-width: 500px;
             margin: 0 auto;
             padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
-        /* الهيدر */
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .subtitle {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
-        /* البطاقة الرئيسية */
-        .main-card {
-            background: rgba(255, 255, 255, 0.1);
+        .birthday-card {
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 30px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
+            margin: 20px 0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        .love-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.2em;
-            margin-bottom: 15px;
+        .birthday-title {
+            font-size: 2.5em;
+            margin-bottom: 10px;
             color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .name {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
         }
 
         .message {
-            font-size: 1.1em;
+            font-size: 1.2em;
             line-height: 1.6;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .from {
-            font-style: italic;
-            opacity: 0.8;
-            margin-top: 15px;
-        }
-
-        /* الأزرار */
-        .buttons {
-            display: flex;
-            gap: 10px;
             margin: 20px 0;
         }
 
-        .btn {
-            flex: 1;
-            padding: 12px 20px;
+        .cake {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+
+        .gift-btn {
+            background: #ff4757;
+            color: white;
             border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
             border-radius: 25px;
-            font-family: 'Playfair Display', serif;
-            font-weight: bold;
             cursor: pointer;
+            margin: 10px;
             transition: all 0.3s;
-            text-align: center;
         }
 
-        .primary-btn {
-            background: #ff6b6b;
-            color: white;
+        .gift-btn:hover {
+            transform: scale(1.1);
+            background: #ff3742;
         }
 
-        .secondary-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* الإحصائيات */
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 25px 0;
-            text-align: center;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .stat-number {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.9em;
-            opacity: 0.8;
-        }
-
-        /* الهدايا */
-        .gifts-section {
-            margin: 25px 0;
-        }
-
-        .section-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .gifts-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+        .gift-container {
+            display: none;
+            margin-top: 20px;
         }
 
         .gift-item {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.3);
+            padding: 15px;
             border-radius: 15px;
-            padding: 15px 10px;
-            text-align: center;
+            margin: 10px 0;
             cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .gift-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.4);
         }
 
-        .gift-emoji {
+        .balloon {
+            position: absolute;
             font-size: 2em;
-            margin-bottom: 8px;
+            animation: floatUp 8s linear infinite;
         }
 
-        .gift-name {
-            font-size: 0.9em;
-        }
-
-        /* الموسيقى */
-        .music-player {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .song-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .song-artist {
-            opacity: 0.8;
-            margin-bottom: 15px;
-        }
-
-        .player-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .control-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5em;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .control-btn:hover {
-            transform: scale(1.2);
-        }
-
-        /* الفوتر */
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            opacity: 0.7;
-            font-size: 0.9em;
-        }
-
-        /* القلوب الطائرة */
-        .hearts {
+        .confetti {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            width: 10px;
+            height: 10px;
+            background: #ffd700;
+            animation: fall 5s linear infinite;
         }
 
-        .heart {
-            position: absolute;
-            font-size: 1.2em;
-            opacity: 0;
-            animation: float 6s linear forwards;
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
-        @keyframes float {
-            0% {
-                opacity: 1;
-                transform: translateY(100vh) rotate(0deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px) rotate(360deg);
-            }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
         }
 
-        /* المودال */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 300px;
-            text-align: center;
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5em;
-            cursor: pointer;
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- الهيدر -->
-        <div class="header">
-            <div class="logo">Dedicapag</div>
-            <div class="subtitle">Special dedication for my love</div>
-        </div>
-
-        <!-- البطاقة الرئيسية -->
-        <div class="main-card">
-            <div class="love-title">For My Beautiful Love 💖</div>
+        <div class="birthday-card">
+            <div class="birthday-title">🎉 عيد ميلاد سعيد! 🎉</div>
+            <div class="name" id="herName">حبيبتي!</div>
+            <div class="cake">🎂</div>
+            
             <div class="message">
-                Every moment with you feels like a beautiful dream. You bring so much joy and happiness into my life. I cherish every second we spend together and I'm so grateful to have you by my side.
-            </div>
-            <div class="from">- With all my love</div>
-
-            <!-- الإحصائيات -->
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">15.7K</div>
-                    <div class="stat-label">Loves</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">328</div>
-                    <div class="stat-label">Shares</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">2.4K</div>
-                    <div class="stat-label">Views</div>
-                </div>
+                كل عام وأنتِ أغلى ما في حياتي! 
+                أتمنى لكِ يوماً مليئاً بالسعادة والحب. 
+                أنتِ تستحقين كل شيء جميل في هذا العالم! 💖
             </div>
 
-            <!-- الأزرار -->
-            <div class="buttons">
-                <button class="btn primary-btn" onclick="shareLove()">
-                    💝 Share Love
-                </button>
-                <button class="btn secondary-btn" onclick="showMessage()">
-                    💌 Message
-                </button>
-            </div>
-        </div>
+            <button class="gift-btn" onclick="showGifts()">
+                🎁 افتح هداياك!
+            </button>
 
-        <!-- قسم الهدايا -->
-        <div class="gifts-section">
-            <div class="section-title">Virtual Gifts 🎁</div>
-            <div class="gifts-grid">
-                <div class="gift-item" onclick="openGift('flower')">
-                    <div class="gift-emoji">💐</div>
-                    <div class="gift-name">Flowers</div>
+            <div class="gift-container" id="giftContainer">
+                <div class="gift-item" onclick="showMessage('virtual flowers')">
+                    💐 باقة ورد افتراضية
                 </div>
-                <div class="gift-item" onclick="openGift('heart')">
-                    <div class="gift-emoji">💖</div>
-                    <div class="gift-name">Hearts</div>
+                <div class="gift-item" onclick="showMessage('love letter')">
+                    💌 رسالة حب خاصة
                 </div>
-                <div class="gift-item" onclick="openGift('kiss')">
-                    <div class="gift-emoji">💋</div>
-                    <div class="gift-name">Kisses</div>
+                <div class="gift-item" onclick="showMessage('song')">
+                    🎵 أغنية مهداة لكِ
                 </div>
-                <div class="gift-item" onclick="openGift('song')">
-                    <div class="gift-emoji">🎵</div>
-                    <div class="gift-name">Song</div>
-                </div>
-                <div class="gift-item" onclick="openGift('memory')">
-                    <div class="gift-emoji">📸</div>
-                    <div class="gift-name">Memory</div>
-                </div>
-                <div class="gift-item" onclick="openGift('surprise')">
-                    <div class="gift-emoji">🎁</div>
-                    <div class="gift-name">Surprise</div>
+                <div class="gift-item" onclick="showMessage('promise')">
+                    💖 وعد بحب أبدي
                 </div>
             </div>
-        </div>
-
-        <!-- مشغل الموسيقى -->
-        <div class="music-player">
-            <div class="song-title">Perfect - Ed Sheeran</div>
-            <div class="song-artist">Our special song 💫</div>
-            <div class="player-controls">
-                <button class="control-btn">⏮</button>
-                <button class="control-btn">▶️</button>
-                <button class="control-btn">⏭</button>
-            </div>
-        </div>
-
-        <!-- الفوتر -->
-        <div class="footer">
-            Made with 💖 using Dedicapag<br>
-            Created especially for you
         </div>
     </div>
-
-    <!-- المودال -->
-    <div id="giftModal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">✕</button>
-            <div id="modalEmoji" style="font-size: 4em; margin-bottom: 15px;">🎁</div>
-            <div id="modalTitle" style="font-family: 'Dancing Script', cursive; font-size: 2em; margin-bottom: 10px;"></div>
-            <div id="modalMessage" style="line-height: 1.6;"></div>
-        </div>
-    </div>
-
-    <!-- القلوب الطائرة -->
-    <div class="hearts" id="heartsContainer"></div>
 
     <script>
-        // بيانات الهدايا
-        const gifts = {
-            flower: {
-                emoji: "💐",
-                title: "Beautiful Flowers",
-                message: "These virtual flowers represent my endless love for you. Each petal carries a sweet memory of our time together."
-            },
-            heart: {
-                emoji: "💖",
-                title: "My Heart",
-                message: "I give you my heart completely. It beats only for you and will forever be yours."
-            },
-            kiss: {
-                emoji: "💋",
-                title: "Endless Kisses",
-                message: "Sending you thousands of virtual kisses! Each one carries all my love and affection."
-            },
-            song: {
-                emoji: "🎵",
-                title: "Our Song",
-                message: "This song always reminds me of you. Whenever I hear it, I think of our beautiful moments together."
-            },
-            memory: {
-                emoji: "📸",
-                title: "Precious Memory",
-                message: "This memory is forever engraved in my heart. It's one of my favorite moments with you."
-            },
-            surprise: {
-                emoji: "🎁",
-                title: "Special Surprise!",
-                message: "The biggest surprise is how much I love you! You are the best gift life has given me."
-            }
-        };
+        // إنشاء بالونات
+        function createBalloons() {
+            const balloons = ['🎈', '🎈', '🎈', '🎈', '🎈'];
+            balloons.forEach((balloon, index) => {
+                const ball = document.createElement('div');
+                ball.className = 'balloon';
+                ball.textContent = balloon;
+                ball.style.left = (index * 20 + 10) + '%';
+                ball.style.animationDelay = (index * 2) + 's';
+                document.body.appendChild(ball);
+            });
+        }
 
-        // فتح الهدية
-        function openGift(type) {
-            const gift = gifts[type];
-            if (gift) {
-                document.getElementById('modalEmoji').textContent = gift.emoji;
-                document.getElementById('modalTitle').textContent = gift.title;
-                document.getElementById('modalMessage').textContent = gift.message;
-                document.getElementById('giftModal').style.display = 'flex';
-                
-                // إطلاق قلوب
-                createHearts(gift.emoji);
+        // إنشاء كونفيتي
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confetti.style.background = getRandomColor();
+                document.body.appendChild(confetti);
             }
         }
 
-        // إغلاق المودال
-        function closeModal() {
-            document.getElementById('giftModal').style.display = 'none';
+        function getRandomColor() {
+            const colors = ['#ff6b6b', '#ffd700', '#74b9ff', '#55efc4', '#fd79a8'];
+            return colors[Math.floor(Math.random() * colors.length)];
         }
 
-        // مشاركة الحب
-        function shareLove() {
-            alert("Love shared! 💝\nYour beautiful message has been shared with the world!");
-            createHearts('💝');
+        // عرض الهدايا
+        function showGifts() {
+            document.getElementById('giftContainer').style.display = 'block';
+            createConfetti();
         }
 
-        // عرض رسالة
-        function showMessage() {
-            openGift('heart');
-        }
-
-        // إنشاء قلوب طائرة
-        function createHearts(emoji = '💖') {
-            const container = document.getElementById('heartsContainer');
+        // عرض الرسائل
+        function showMessage(type) {
+            const messages = {
+                'virtual flowers': '💐 هذه الباقة من أجمل الورود أهديها لأسعد إنسانة في حياتي!',
+                'love letter': '💌 حبيبتي... في عيد ميلادك أريد أن أخبرك أن حبي لكِ ينمو كل يوم!',
+                'song': '🎵 هذه الأغنية خاصة بكِ... تذكرني بجمال روحك وطيب قلبك!',
+                'promise': '💖 أعدك بأن أظل بجانبك دائماً وأحبك أكثر كل يوم!'
+            };
             
-            for (let i = 0; i < 12; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.textContent = emoji;
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = Math.random() * 3 + 's';
-                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                
-                container.appendChild(heart);
-                
-                setTimeout(() => {
-                    heart.remove();
-                }, 6000);
-            }
+            alert(messages[type] || '🎂 عيد ميلاد سعيد حبيبتي!');
+            createConfetti();
         }
-
-        // قلوب تلقائية
-        setInterval(() => {
-            createHearts();
-        }, 3000);
 
         // بدء التأثيرات
         window.onload = function() {
-            createHearts('💖');
+            createBalloons();
+            createConfetti();
+            
+            // اسأل عن اسمها
+            const name = prompt('ما اسم حبيبتك؟') || 'حبيبتي';
+            document.getElementById('herName').textContent = name;
         }
 
-        // إغلاق المودال بالضغط خارجها
-        window.onclick = function(event) {
-            const modal = document.getElementById('giftModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
+        // كونفيتي مستمر
+        setInterval(createConfetti, 3000);
     </script>
 </body>
-            </html>
+</html>
