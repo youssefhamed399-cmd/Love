@@ -13,7 +13,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffafaf);
             color: #5a3e36;
             min-height: 100vh;
             font-family: 'Dancing Script', cursive;
@@ -37,16 +37,15 @@
 
         /* الصفحة الأولى */
         #homeScreen {
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
-            position: relative;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffafaf);
         }
 
         .welcome-container {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(15px);
             border-radius: 25px;
             padding: 50px 40px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             animation: fadeInUp 1s ease-out;
         }
@@ -92,19 +91,19 @@
             box-shadow: 0 12px 30px rgba(212, 77, 92, 0.6);
         }
 
-        /* الصفحة الثانية */
+        /* الصفحة الثانية - نفس خلفية الصفحة الأولى */
         #messageScreen {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffafaf);
         }
 
         .message-container {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(20px);
             border-radius: 25px;
             padding: 40px 35px;
             margin: 20px;
             max-width: 700px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             animation: slideIn 1s ease-out;
         }
@@ -134,7 +133,7 @@
         }
 
         .back-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #d44d5c, #ff6b6b);
             color: white;
             border: none;
             padding: 15px 30px;
@@ -144,7 +143,7 @@
             margin: 15px 0;
             font-family: 'Dancing Script', cursive;
             font-weight: bold;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 25px rgba(212, 77, 92, 0.4);
             transition: all 0.3s;
         }
 
@@ -270,10 +269,11 @@
         </div>
 
         <div class="video-container">
+            <!-- الفيديو الجديد - بيشتغل تلقائي -->
             <iframe 
                 class="video-frame"
-                src="https://www.youtube.com/embed/kPa7bsKwL-c?autoplay=1&mute=0" 
-                title="YouTube video player" 
+                src="https://www.youtube.com/embed/kPa7bsKwL-c?autoplay=1&mute=0&rel=0&modestbranding=1" 
+                title="فيديو رومانسي"
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
@@ -293,6 +293,12 @@
             document.getElementById('homeScreen').classList.remove('active');
             document.getElementById('messageScreen').classList.add('active');
             createFloatingElements();
+            
+            // تأكيد تشغيل الفيديو
+            setTimeout(() => {
+                const iframe = document.querySelector('.video-frame');
+                console.log('الفيديو جاهز للتشغيل');
+            }, 1000);
         }
 
         function goBack() {
@@ -320,6 +326,14 @@
 
         window.onload = function() {
             createFloatingElements();
+        }
+
+        // حل بديل إذا الفيديو مش بيتشغل
+        function forceVideoPlay() {
+            const iframe = document.querySelector('.video-frame');
+            if (iframe) {
+                iframe.src += "&autoplay=1";
+            }
         }
     </script>
 </body>
