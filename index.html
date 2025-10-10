@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لحبيبتي الغالية 💖</title>
+    <title>لحبيبتي الغالية</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -13,194 +13,161 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 50%, #ffafaf 100%);
-            color: white;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            color: #5a3e36;
             min-height: 100vh;
             font-family: 'Dancing Script', cursive;
-            text-align: center;
-            padding: 20px;
             overflow-x: hidden;
+            direction: rtl;
         }
 
-        .magic-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: rgba(255,255,255,0.15);
-            border-radius: 40px;
-            padding: 50px 40px;
-            backdrop-filter: blur(25px);
-            border: 3px solid rgba(255,255,255,0.2);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        .screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .active {
+            display: flex;
+        }
+
+        /* الصفحة الأولى */
+        #homeScreen {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
             position: relative;
-            overflow: hidden;
-            animation: fadeIn 1.5s ease-out;
         }
 
-        .main-title {
-            font-size: 4em;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: titleGlow 3s ease-in-out infinite;
-        }
-
-        .love-message {
-            font-size: 2em;
-            line-height: 1.8;
-            margin: 40px 0;
-            background: rgba(255,255,255,0.2);
-            padding: 40px;
+        .welcome-container {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
             border-radius: 25px;
-            border: 2px solid rgba(255,255,255,0.3);
-            animation: slideIn 1.2s ease-out;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            padding: 50px 40px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .welcome-title {
+            font-size: 3em;
+            margin-bottom: 30px;
+            color: #d44d5c;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: bounce 2s infinite;
+        }
+
+        /* الدب البنده */
+        .bear-container {
+            margin: 40px 0;
+            position: relative;
+            animation: bearFloat 3s ease-in-out infinite;
+        }
+
+        .bear-with-heart {
+            font-size: 8em;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+        }
+
+        .open-btn {
+            background: linear-gradient(45deg, #d44d5c, #ff6b6b);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.4em;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 20px 0;
+            font-family: 'Dancing Script', cursive;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(212, 77, 92, 0.4);
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .open-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(212, 77, 92, 0.6);
+        }
+
+        /* الصفحة الثانية */
+        #messageScreen {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+        }
+
+        .message-container {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px 35px;
+            margin: 20px;
+            max-width: 700px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            animation: slideIn 1s ease-out;
+        }
+
+        .message-text {
+            font-size: 1.5em;
+            line-height: 2;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #5a3e36;
         }
 
         .video-container {
-            margin: 50px 0;
-            border-radius: 30px;
+            margin: 35px 0;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-            border: 4px solid rgba(255,255,255,0.3);
-            animation: zoomIn 1.5s ease-out;
-            position: relative;
-            padding-top: 56.25%; /* نسبة 16:9 للفيديو */
-            height: 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            animation: zoomIn 1s ease-out;
         }
 
         .video-frame {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
+            max-width: 560px;
+            height: 315px;
             border: none;
-            border-radius: 26px;
+            border-radius: 20px;
         }
 
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 26px;
-            z-index: 1;
-            transition: opacity 0.5s;
-        }
-
-        .video-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .play-button {
-            background: rgba(255,255,255,0.9);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5em;
+        .back-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s, background 0.3s;
+            margin: 15px 0;
+            font-family: 'Dancing Script', cursive;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
         }
 
-        .play-button:hover {
-            transform: scale(1.1);
-            background: rgba(255,255,255,1);
+        .back-btn:hover {
+            transform: translateY(-3px) scale(1.05);
         }
 
-        .sticker-showcase {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-
-        .sticker {
-            font-size: 4em;
-            animation: float 4s ease-in-out infinite;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
-        }
-
-        .hearts-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .heart {
-            position: absolute;
-            font-size: 2em;
-            opacity: 0;
-            animation: heartFloat 8s linear infinite;
-        }
-
-        .page-indicator {
-            margin-top: 30px;
-            font-size: 1.8em;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .page-dot {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
-        }
-
-        .page-dot.active {
-            background: white;
-            transform: scale(1.2);
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @keyframes fadeIn {
+        /* الأنيميشنات */
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: scale(0.9);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes titleGlow {
-            0%, 100% {
-                text-shadow: 0 0 20px rgba(255,107,107,0.5);
-            }
-            50% {
-                text-shadow: 0 0 30px rgba(255,107,107,0.8), 0 0 40px rgba(255,215,0,0.6);
+                transform: translateY(0);
             }
         }
 
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateX(-100px);
+                transform: translateX(-50px);
             }
             to {
                 opacity: 1;
@@ -211,236 +178,149 @@
         @keyframes zoomIn {
             from {
                 opacity: 0;
-                transform: scale(0.7) rotate(-5deg);
+                transform: scale(0.8);
             }
             to {
                 opacity: 1;
-                transform: scale(1) rotate(0);
+                transform: scale(1);
             }
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg) scale(1);
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes bearFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
             }
-            33% {
-                transform: translateY(-30px) rotate(5deg) scale(1.2);
+            25% { 
+                transform: translateY(-20px) rotate(2deg);
             }
-            66% {
-                transform: translateY(-15px) rotate(-5deg) scale(1.1);
+            75% { 
+                transform: translateY(-10px) rotate(-2deg);
             }
         }
 
-        @keyframes heartFloat {
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* القلوب الطائرة */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 2em;
+            opacity: 0.8;
+            animation: floatAround 8s linear infinite;
+        }
+
+        @keyframes floatAround {
             0% {
-                opacity: 0;
-                transform: translateY(100vh) translateX(0px) rotate(0deg) scale(0.5);
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
+                transform: translateY(100vh) translateX(0px) rotate(0deg);
             }
             100% {
-                opacity: 0;
-                transform: translateY(-200px) translateX(200px) rotate(360deg) scale(1.5);
-            }
-        }
-
-        /* تحسينات للجوال */
-        @media (max-width: 768px) {
-            .main-title {
-                font-size: 2.5em;
-            }
-            
-            .love-message {
-                font-size: 1.5em;
-                padding: 20px;
-            }
-            
-            .magic-container {
-                padding: 30px 20px;
-                border-radius: 20px;
-            }
-            
-            .sticker {
-                font-size: 2.5em;
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
             }
         }
     </style>
 </head>
 <body>
-    <div class="magic-container">
-        <h1 class="main-title">💝 لحبيبتي الغالية 💝</h1>
-        
-        <!-- الصفحة الأولى -->
-        <div id="page1" class="page">
-            <div class="love-message">
+    <!-- الصفحة الأولى -->
+    <div id="homeScreen" class="screen active">
+        <div class="welcome-container">
+            <div class="welcome-title">💝 لحبيبتي الغالية 💝</div>
+            
+            <!-- الدب البنده شايل قلب -->
+            <div class="bear-container">
+                <div class="bear-with-heart">🧸💖</div>
+            </div>
+
+            <button class="open-btn" onclick="openMessage()">
+                📖 افتح رسالتي الخاصة
+            </button>
+        </div>
+    </div>
+
+    <!-- الصفحة الثانية -->
+    <div id="messageScreen" class="screen">
+        <div class="message-container">
+            <div class="message-text">
                 إلى حبيبتي الغالية...<br><br>
                 
                 منذ أن عرفتك، لم تعد الحياة كما كانت.. أصبح لكل لحظة معنى، وكل يوم يحمل في طياته سحراً مختلفاً.<br><br>
 
                 أنتِ ذلك الشعور الذي لا يمكن وصفه، لكن القلب يعرفه جيداً.. ذلك الهدوء الذي لا يأتي إلا بوجودك، وذلك الأمان الذي لا أشعر به إلا عندما تكونين قريبة.<br><br>
 
-                في عينيك وجدت كل المعاني الجميلة، وفي وجودك اكتشفت معنى الحياة الحقيقية. كل شيء أصبح أجمل لأنكِ جزء منه.
-            </div>
+                في عينيك وجدت كل المعاني الجميلة، وفي وجودك اكتشفت معنى الحياة الحقيقية. كل شيء أصبح أجمل لأنكِ جزء منه.<br><br>
 
-            <div class="video-container">
-                <div class="video-overlay" id="videoOverlay">
-                    <div class="play-button" id="playButton">
-                        ▶
-                    </div>
-                </div>
-                <iframe 
-                    class="video-frame"
-                    id="videoFrame"
-                    src="https://www.youtube.com/embed/kPa7bsKwL-c?rel=0&showinfo=0&modestbranding=1" 
-                    title="فيديو رومانسي"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-
-            <div class="sticker-showcase">
-                <div class="sticker" style="animation-delay: 0s; color: #ff6b6b;">🧸</div>
-                <div class="sticker" style="animation-delay: 0.7s; color: #ff8e8e;">💖</div>
-                <div class="sticker" style="animation-delay: 1.4s; color: #ffafaf;">🌸</div>
-                <div class="sticker" style="animation-delay: 2.1s; color: #ffd700;">🐻</div>
-                <div class="sticker" style="animation-delay: 2.8s; color: #a8edea;">💕</div>
-                <div class="sticker" style="animation-delay: 3.5s; color: #fed6e3;">🌹</div>
-            </div>
-        </div>
-        
-        <!-- الصفحة الثانية -->
-        <div id="page2" class="page hidden">
-            <div class="love-message">
-                يا أجمل ما في حياتي...<br><br>
-                
-                كلما ابتعدت عنك، أشعر أن جزءًا مني مفقود، وكلما اقتربت، أكتشف أنني لم أكتمل إلا بوجودك.<br><br>
-                
-                أنتِ النور الذي يضيء أيامي، والبسمة التي تزين شفتي، والدفء الذي يملأ قلبي.<br><br>
-                
-                أحببتك لأنك تجعلينني أفضل، لأنك تذكرينني بجمال الحياة، ولأنك ببساطة... أنتِ.<br><br>
-                
-                مهما كتبت من كلمات، ومهما عبرت عن مشاعري، فلن أستطيع أن أوفيك حقك... فحبك أكبر من أن يحويه أي كلام.
-            </div>
-            
-            <div class="sticker-showcase">
-                <div class="sticker" style="animation-delay: 0s; color: #ff6b6b;">🌙</div>
-                <div class="sticker" style="animation-delay: 0.7s; color: #ff8e8e;">✨</div>
-                <div class="sticker" style="animation-delay: 1.4s; color: #ffafaf;">💫</div>
-                <div class="sticker" style="animation-delay: 2.1s; color: #ffd700;">🌟</div>
-                <div class="sticker" style="animation-delay: 2.8s; color: #a8edea;">🌠</div>
-                <div class="sticker" style="animation-delay: 3.5s; color: #fed6e3;">💘</div>
-            </div>
-        </div>
-        
-        <!-- الصفحة الثالثة -->
-        <div id="page3" class="page hidden">
-            <div class="love-message">
-                حبيبتي...<br><br>
-                
-                أعدك بأن أكون لكِ دائمًا، في السراء والضراء، في الفرح والحزن، في كل وقت وحين.<br><br>
-                
-                أعدك بأن أحترم أحلامك، وأدعم طموحاتك، وأساندك في كل خطوة تخطينها.<br><br>
-                
-                أعدك بأن أكون الصديق الوفي، والحبيب المخلص، والرجل الذي تستحقين.<br><br>
-                
-                وأعدك بأن أحبك أكثر كل يوم، لأن حبك هو أجمل ما حدث في حياتي.<br><br>
-                
-                إلى الأبد... حبيبك.
-            </div>
-            
-            <div class="sticker-showcase">
-                <div class="sticker" style="animation-delay: 0s; color: #ff6b6b;">💌</div>
-                <div class="sticker" style="animation-delay: 0.7s; color: #ff8e8e;">💍</div>
-                <div class="sticker" style="animation-delay: 1.4s; color: #ffafaf;">💑</div>
-                <div class="sticker" style="animation-delay: 2.1s; color: #ffd700;">👩‍❤️‍👨</div>
-                <div class="sticker" style="animation-delay: 2.8s; color: #a8edea;">💒</div>
-                <div class="sticker" style="animation-delay: 3.5s; color: #fed6e3;">💞</div>
+                أنتِ الذكرى الجميلة التي لا تنسى، والحاضر الذي أتمسك به، والمستقبل الذي أتطلع إليه بكل شغف.
             </div>
         </div>
 
-        <div class="page-indicator">
-            <div class="page-dot active" data-page="1"></div>
-            <div class="page-dot" data-page="2"></div>
-            <div class="page-dot" data-page="3"></div>
+        <div class="video-container">
+            <iframe 
+                class="video-frame"
+                src="https://www.youtube.com/embed/kPa7bsKwL-c?autoplay=1&mute=0" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
+
+        <button class="back-btn" onclick="goBack()">
+            ↩ العودة للصفحة الرئيسية
+        </button>
     </div>
 
-    <div class="hearts-background" id="heartsContainer"></div>
+    <!-- العناصر الطائرة -->
+    <div class="floating-elements" id="floatingContainer"></div>
 
     <script>
-        // إنشاء قلوب طائرة في الخلفية
-        function createHearts() {
-            const container = document.getElementById('heartsContainer');
-            const hearts = ['💖', '💕', '💗', '💓', '💞', '💝'];
+        function openMessage() {
+            document.getElementById('homeScreen').classList.remove('active');
+            document.getElementById('messageScreen').classList.add('active');
+            createFloatingElements();
+        }
+
+        function goBack() {
+            document.getElementById('messageScreen').classList.remove('active');
+            document.getElementById('homeScreen').classList.add('active');
+        }
+
+        function createFloatingElements() {
+            const container = document.getElementById('floatingContainer');
+            const elements = ['💖', '💕', '🌸', '🌹', '🧸', '💝'];
             
-            // تقليل عدد القلوب لتحسين الأداء
-            for (let i = 0; i < 12; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = (Math.random() * 10) + 's';
-                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                heart.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            container.innerHTML = '';
+            
+            elements.forEach((element, index) => {
+                const el = document.createElement('div');
+                el.className = 'floating-element';
+                el.textContent = element;
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDelay = (index * 0.5) + 's';
+                el.style.fontSize = (Math.random() * 25 + 20) + 'px';
                 
-                container.appendChild(heart);
-            }
-        }
-
-        // التحكم في تشغيل الفيديو
-        function setupVideo() {
-            const videoFrame = document.getElementById('videoFrame');
-            const videoOverlay = document.getElementById('videoOverlay');
-            const playButton = document.getElementById('playButton');
-            
-            playButton.addEventListener('click', function() {
-                // إضافة خاصية التشغيل التلقائي مع كتم الصوت
-                const currentSrc = videoFrame.src;
-                if (!currentSrc.includes('autoplay=1')) {
-                    videoFrame.src = currentSrc + '&autoplay=1&mute=1';
-                }
-                videoOverlay.classList.add('hidden');
-            });
-            
-            // إخفاء الشاشة التمهيدية عند بدء التشغيل
-            videoFrame.addEventListener('load', function() {
-                // يمكن إضافة أي إعدادات إضافية هنا
+                container.appendChild(el);
             });
         }
 
-        // التحكم في التنقل بين الصفحات
-        function setupPageNavigation() {
-            const pageDots = document.querySelectorAll('.page-dot');
-            const pages = document.querySelectorAll('.page');
-            
-            pageDots.forEach(dot => {
-                dot.addEventListener('click', function() {
-                    const targetPage = this.getAttribute('data-page');
-                    
-                    // تحديث النقاط النشطة
-                    pageDots.forEach(d => d.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // إظهار الصفحة المطلوبة
-                    pages.forEach(page => page.classList.add('hidden'));
-                    document.getElementById(`page${targetPage}`).classList.remove('hidden');
-                });
-            });
-        }
-
-        // بدء كل التأثيرات
         window.onload = function() {
-            createHearts();
-            setupVideo();
-            setupPageNavigation();
-            
-            // إضافة قلوب كل 15 ثانية بدلاً من 10 لتحسين الأداء
-            setInterval(createHearts, 15000);
+            createFloatingElements();
         }
     </script>
 </body>
-                    </html>
+</html>
