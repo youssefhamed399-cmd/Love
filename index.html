@@ -3,431 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع خاص 💝</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>رسالة إلى حبيبتي 💌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            background: linear-gradient(135deg, #ff6b9d, #ff8e6e, #ffafbd);
             color: #5a3e36;
             min-height: 100vh;
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Tajawal', sans-serif;
             text-align: center;
             padding: 20px;
             overflow-x: hidden;
-        }
-
-        .screen {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        .active {
-            display: flex;
-            opacity: 1;
-        }
-
-        /* شاشة الباسورد */
-        #passwordScreen {
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
-        }
-
-        .password-box {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            padding: 50px 40px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            animation: fadeIn 1s ease-out;
-        }
-
-        .lock-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
-
-        .password-title {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            color: #d44d5c;
-        }
-
-        .password-subtitle {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            color: #7a5a50;
-        }
-
-        .password-input {
-            padding: 15px 20px;
-            font-size: 1.3em;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            color: #5a3e36;
-            margin: 20px 0;
-            width: 250px;
-            text-align: center;
-            font-family: 'Dancing Script', cursive;
-            outline: none;
-            transition: all 0.3s;
-        }
-
-        .password-input:focus {
-            border-color: #d44d5c;
-            background: rgba(255, 255, 255, 0.4);
-            transform: scale(1.05);
-        }
-
-        .password-input::placeholder {
-            color: rgba(93, 62, 54, 0.6);
-        }
-
-        .unlock-btn {
-            background: linear-gradient(45deg, #d44d5c, #ff6b6b);
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            font-size: 1.4em;
-            border-radius: 25px;
-            cursor: pointer;
-            margin: 15px 0;
-            font-family: 'Dancing Script', cursive;
-            font-weight: bold;
-            box-shadow: 0 8px 25px rgba(212, 77, 92, 0.4);
-            transition: all 0.3s;
-        }
-
-        .unlock-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(212, 77, 92, 0.6);
-        }
-
-        .hint-btn {
-            background: transparent;
-            border: none;
-            color: #7a5a50;
-            font-size: 1em;
-            margin-top: 10px;
-            cursor: pointer;
-            text-decoration: underline;
-            font-family: 'Dancing Script', cursive;
-            transition: all 0.3s;
-        }
-
-        .hint-btn:hover {
-            color: #d44d5c;
-            transform: scale(1.05);
-        }
-
-        /* الشاشة الرئيسية */
-        #mainScreen {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-        }
-
-        .content-box {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 40px 35px;
-            margin: 20px;
-            max-width: 700px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            animation: slideIn 1s ease-out;
-        }
-
-        .love-title {
-            font-size: 3em;
-            margin-bottom: 30px;
-            color: #d44d5c;
-            animation: bounce 2s infinite;
-        }
-
-        .bear-heart {
-            font-size: 6em;
-            margin: 30px 0;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .message {
-            font-size: 1.6em;
-            line-height: 1.8;
-            margin: 30px 0;
-            background: rgba(255, 255, 255, 0.3);
-            padding: 30px;
-            border-radius: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            text-align: right;
             direction: rtl;
         }
-
-        .special-note {
-            font-size: 1.3em;
-            margin-top: 20px;
-            color: #d44d5c;
-            font-weight: bold;
-            animation: pulse 2s infinite;
-        }
-
-        .video-container {
-            margin: 35px 0;
-            border-radius: 20px;
-            overflow: hidden;
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .envelope {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px; padding: 40px 30px; margin: 20px 0;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border: 3px solid rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255,255,255,0.5);
+            position: relative; overflow: hidden;
         }
-
-        .video-frame {
-            width: 100%;
-            max-width: 560px;
-            height: 315px;
-            border: none;
-            border-radius: 18px;
+        .envelope:before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 10px;
+            background: linear-gradient(90deg, #ff6b9d, #ff8e6e, #ffafbd);
         }
+        .heart-icon { font-size: 4em; margin-bottom: 20px; animation: heartbeat 1.5s ease-in-out infinite both; }
+        .title { font-size: 2.8em; margin-bottom: 30px; color: #d44d5c; font-family: 'Dancing Script', cursive; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        .message { font-size: 1.4em; line-height: 2; text-align: right; padding: 0 20px; color: #5a3e36; margin-bottom: 30px; }
+        .message p { margin-bottom: 25px; padding: 15px; background: rgba(255,255,255,0.5); border-radius: 15px; border-right: 4px solid #ff6b9d; transition: transform 0.3s; }
+        .message p:hover { transform: translateX(-10px); }
+        .signature { font-size: 1.6em; margin-top: 40px; color: #d44d5c; font-family: 'Dancing Script', cursive; font-weight: bold; }
+        .love-photo { width: 200px; height: 200px; border-radius: 50%; margin: 30px auto; background: linear-gradient(135deg, #ff6b9d, #ff8e6e); display: flex; align-items: center; justify-content: center; font-size: 5em; box-shadow: 0 10px 25px rgba(0,0,0,0.2); border: 5px solid white; animation: float 3s ease-in-out infinite; }
+        .decoration { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+        .floating-hearts { position: absolute; font-size: 1.8em; opacity: 0; animation: floatHearts 8s linear infinite; }
+        .music-player { background: rgba(255,255,255,0.7); border-radius: 15px; padding: 20px; margin: 30px 0; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .music-title { font-size: 1.5em; margin-bottom: 15px; color: #d44d5c; font-family: 'Dancing Script', cursive; }
+        .footer { margin-top: 40px; color: rgba(255,255,255,0.9); font-size: 1.2em; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
 
-        /* الأنيميشنات */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* القلوب الطائرة */
-        .floating-hearts {
+        /* Password overlay styles */
+        .password-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            max-width: 420px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            direction: rtl;
+        }
+        .password-box h2 { margin-bottom: 12px; font-family: 'Tajawal', sans-serif; color: #d44d5c; }
+        .password-box p { margin-bottom: 18px; color: #555; }
+        .password-input {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .password-btn {
+            margin-top: 12px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1.05rem;
+            background: linear-gradient(90deg,#ff6b9d,#ff8e6e);
+            color: white;
+            cursor: pointer;
+        }
+        .error { margin-top: 10px; color: #c62828; min-height: 1.2em; }
+        .shake { animation: shake 0.35s; }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            50% { transform: translateX(8px); }
+            75% { transform: translateX(-6px); }
+            100% { transform: translateX(0); }
         }
 
-        .heart {
-            position: absolute;
-            font-size: 2em;
-            opacity: 0;
-            animation: heartFloat 8s linear infinite;
+        /* Animations */
+        @keyframes heartbeat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes floatHearts {
+            0% { opacity: 0; transform: translateY(100vh) translateX(0) rotate(0deg); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-100px) translateX(100px) rotate(360deg); }
         }
 
-        @keyframes heartFloat {
-            0% {
-                opacity: 0;
-                transform: translateY(100vh) translateX(0px) rotate(0deg);
-            }
-            20% {
-                opacity: 1;
-            }
-            80% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px) translateX(100px) rotate(360deg);
-            }
-        }
-
-        /* رسالة خاصة */
-        .secret-message {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 15px;
-            font-size: 1.2em;
-            border: 1px dashed #d44d5c;
+        @media (max-width: 768px) {
+            .title { font-size: 2.2em; }
+            .message { font-size: 1.2em; padding: 0 10px; }
+            .love-photo { width: 150px; height: 150px; font-size: 3.5em; }
         }
     </style>
 </head>
 <body>
-    <!-- شاشة الباسورد -->
-    <div id="passwordScreen" class="screen active">
-        <div class="password-box">
-            <div class="lock-icon">🔒</div>
-            <div class="password-title">أدخل كلمة السر</div>
-            <div class="password-subtitle">هذه الرسالة خاصة جداً 💝</div>
-            <input type="password" class="password-input" placeholder="●●●●" id="passwordInput">
-            <button class="unlock-btn" onclick="checkPassword()">فتح 🔑</button>
-            <button class="hint-btn" onclick="showHint()">تلميح صغير 💡</button>
+    <!-- Password overlay -->
+    <div class="password-overlay" id="passwordOverlay" aria-hidden="false" role="dialog" aria-label="قفل الموقع">
+        <div class="password-box" id="passwordBox">
+            <h2>الموقع محمي بكلمة مرور</h2>
+            <p>أدخل الرقم لعرض المحتوى</p>
+            <input inputmode="numeric" pattern="[0-9]*" id="passwordInput" class="password-input" placeholder="أدخل الرقم" autofocus>
+            <button id="passwordBtn" class="password-btn">افتح</button>
+            <div class="error" id="passwordError"></div>
+            <div style="margin-top:8px;color:#777;font-size:0.9em;">(رمز الاختبار: 908)</div>
         </div>
     </div>
 
-    <!-- الشاشة الرئيسية -->
-    <div id="mainScreen" class="screen">
-        <div class="content-box">
-            <div class="love-title">أغانينا الخاصة 💕</div>
+    <div class="decoration" id="heartsContainer"></div>
+    
+    <div class="container" id="mainContent" aria-hidden="true">
+        <div class="envelope">
+            <div class="heart-icon">💌</div>
+            <h1 class="title">إلى حبيبتي</h1>
             
-            <div class="bear-heart">🧸💖</div>
-
+            <div class="love-photo">💖</div>
+            
             <div class="message">
-                إلى من جعل قلبي يرقص فرحاً،<br>
-                وإلى من حول حياتي إلى أغنية جميلة...<br><br>
-                
-                كل لحظة معك هي فصل جديد في قصة حبنا،<br>
-                وكل نظرة منك تزرع في قلبي بستاناً من المشاعر.<br><br>
-                
-                أنتِ النور الذي يضيء أيامي،<br>
-                والدفء الذي يملأ ليالي،<br>
-                والسلام الذي يهدئ روحي.<br><br>
-                
-                معكِ تعلمت أن الحب ليس مجرد شعور،<br>
-                بل هو وطن آمن، وملاذ دافئ،<br>
-                وحكاية لا تنتهي.<br><br>
-                
-                هذه الأغنية تذكرني بكل شيء جميل فينا،<br>
-                بضحكاتنا، بدموعنا، بلحظاتنا الخاصة،<br>
-                بكل التفاصيل التي تجعل قصتنا فريدة.<br><br>
-                
-                أتمنى أن تظل أغانينا تعزف إلى الأبد،<br>
-                وأن تبقى قلوبنا تنبض معاً في إيقاع واحد.<br><br>
-                
-                أحبك أكثر مما تستطيع الكلمات أن تعبر،<br>
-                وأكثر مما تستطيع الأغاني أن تغني.<br><br>
-                
-                إلى الأبد... 💖
+                <!-- message paragraphs as you had them -->
+                <p>بحبك بطريقة الكلام نفسه بيعجز يوصفها<br>
+                بحبك من غير أسباب من غير شروط من غير تفكير<br>
+                بحبك لأن وجودك في حياتي بقى معنى الأمان اللي كنت بدور عليه من سنين</p>
+                <p>كل مرة بشوفك فيها بحس إن الدنيا لسه بخير<br>
+                وإن ربنا لسه بيبعت لينا هدايا على شكل بشر<br>
+                ضحكتك بتطمني ونظرتك بترجعلي نفسي<br>
+                وصوتك بيهدي كل حاجة جوايا كانت متلخبطة</p>
+                <p>يمكن مش بعرف أقول كل يوم "بحبك"<br>
+                بس كل تصرف بسيط مني، كل نظرة، كل قلق<br>
+                هو طريقة قلبي في إنه يقولك إني بحبك أكتر مما بتتخيلي</p>
+                <p>بحبك لأنك مش بس جزء من أيامي<br>
+                إنت أيامي كلها<br>
+                إنت اللي بترسمي حدود فرحتي<br>
+                واللي من غيرك بيبقى اليوم ناقص والليل طويل والدنيا ملهوش طعم</p>
+                <p>لو سألتيني ليه بحبك<br>
+                مش هعرف أجاوب<br>
+                كل اللي أعرفه إنك كنتي دايمًا الاستثناء الجميل في حياتي<br>
+                وإني مهما الدنيا تغير في هفضل أحبك بنفس النقاء<br>
+                بنفس الإحساس بنفس الشغف اللي بدأ من أول لحظة شوفتك فيها</p>
+                <p>إنتي مش حبيبتي بس<br>
+                إنتي قصتي ونهايتي وكل اللي كان ناقص عشان أبقى أنا</p>
             </div>
-
-            <div class="video-container">
-                <iframe 
-                    class="video-frame"
-                    src="https://www.youtube.com/embed/kPa7bsKwL-c?autoplay=1&mute=0" 
-                    title="أغانينا"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+            
+            <div class="music-player">
+                <div class="music-title">أغانينا الخاصة 💕</div>
+                <audio id="mainAudio" controls style="width: 100%;" preload="none">
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت
+                </audio>
             </div>
-
-            <div class="special-note">
-                "لأنك تستحقين كل أغاني الحب في العالم 💝"
-            </div>
-
-            <div class="secret-message">
-                كلمة السر هي تاريخ أول مرة قلنا فيها "أحبك" ❤️
-            </div>
+            
+            <div class="signature">مع كل حبي 💝</div>
         </div>
+        
+        <div class="footer">صنع بكل الحب ❤️</div>
     </div>
-
-    <!-- القلوب الطائرة -->
-    <div class="floating-hearts" id="heartsContainer"></div>
 
     <script>
-        const PASSWORD = "908";
+        (function(){
+            const CORRECT_PASS = '908'; // الرقم اللي طلبته
+            const overlay = document.getElementById('passwordOverlay');
+            const input = document.getElementById('passwordInput');
+            const btn = document.getElementById('passwordBtn');
+            const err = document.getElementById('passwordError');
+            const mainContent = document.getElementById('mainContent');
+            const heartsContainer = document.getElementById('heartsContainer');
+            const audio = document.getElementById('mainAudio');
 
-        function checkPassword() {
-            const input = document.getElementById('passwordInput').value;
-            if (input === PASSWORD) {
-                // تأثير قبل الانتقال
-                document.getElementById('passwordScreen').style.opacity = '0';
-                setTimeout(showMainScreen, 800);
+            // دالة لفتح المحتوى
+            function unlock() {
+                overlay.style.display = 'none';
+                overlay.setAttribute('aria-hidden', 'true');
+                mainContent.setAttribute('aria-hidden', 'false');
+                mainContent.style.filter = 'none';
+                sessionStorage.setItem('siteUnlocked', '1');
+                // إمكانية تشغيل الصوت إذا رغب المستخدم (لا تُجبر التشغيل)
+                // audio.play().catch(() => {});
+                // الآن ننشئ القلوب
+                createHearts();
+            }
+
+            // دالة عرض خطأ مع هز
+            function showError(message) {
+                err.textContent = message;
+                const box = document.getElementById('passwordBox');
+                box.classList.remove('shake');
+                // فورس إعادة الرسم لإعادة تشغيل الأنيميشن
+                void box.offsetWidth;
+                box.classList.add('shake');
+            }
+
+            // تحقق من حالة المفتوحة في الجلسة
+            if (sessionStorage.getItem('siteUnlocked') === '1') {
+                unlock();
             } else {
-                alert('❌ كلمة السر غير صحيحة! حاول مرة أخرى');
-                document.getElementById('passwordInput').value = '';
-                // تأثير اهتزاز عند الخطأ
-                document.getElementById('passwordInput').style.animation = 'shake 0.5s';
-                setTimeout(() => {
-                    document.getElementById('passwordInput').style.animation = '';
-                }, 500);
+                // إظهار الـ overlay وتمنع التمرير
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                input.focus();
             }
-        }
 
-        function showHint() {
-            alert('💡 التلميح: إنه رقم خاص بنا يتكون من 3 أرقام ❤️');
-        }
+            // التعامل مع الزر وEnter
+            btn.addEventListener('click', checkPass);
+            input.addEventListener('keydown', function(e){
+                if (e.key === 'Enter') checkPass();
+            });
 
-        function showMainScreen() {
-            document.getElementById('passwordScreen').classList.remove('active');
-            document.getElementById('mainScreen').classList.add('active');
-            createHearts();
-            
-            // تشغيل الموسيقى تلقائياً
-            setTimeout(() => {
-                const iframe = document.querySelector('.video-frame');
-                iframe.src += "&autoplay=1";
-            }, 1000);
-        }
-
-        function createHearts() {
-            const container = document.getElementById('heartsContainer');
-            const hearts = ['💖', '💕', '💗', '💓', '💞', '💘', '💝'];
-            
-            for (let i = 0; i < 20; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = (Math.random() * 8) + 's';
-                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                
-                container.appendChild(heart);
-            }
-        }
-
-        // السماح بالإدخال بالإنتر
-        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
-        });
-
-        // قلوب عند التحميل
-        window.onload = function() {
-            createHearts();
-            
-            // إضافة أنيميشن الاهتزاز
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes shake {
-                    0%, 100% { transform: translateX(0); }
-                    25% { transform: translateX(-10px); }
-                    75% { transform: translateX(10px); }
+            function checkPass() {
+                const val = (input.value || '').trim();
+                if (val === CORRECT_PASS) {
+                    // فك الحظر
+                    document.body.style.overflow = ''; // استرجاع التمرير
+                    unlock();
+                } else {
+                    showError('الرقم خاطئ، حاول مرة تانية');
+                    input.value = '';
+                    input.focus();
                 }
-            `;
-            document.head.appendChild(style);
-        }
+            }
+
+            // إنشاء القلوب الطائرة (نفس دالتك لكن هنا متاحة فور فتح الصفحة أو الاستدعاء)
+            function createHearts() {
+                // لو القلوب مضبوطة مسبقًا امنع التكرار
+                if (heartsContainer.children.length) return;
+                const hearts = ['💖', '💕', '💗', '💓', '💞', '💘', '💝', '❤️'];
+                for (let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-hearts';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    // استخدم vw لإتاحة توزيع أوسع
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = (Math.random() * 80 + 10) + 'vh';
+                    heart.style.animationDelay = (Math.random() * 8) + 's';
+                    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                    heartsContainer.appendChild(heart);
+                }
+            }
+
+            // لو فتح المستخدم الصفحة بالتمرير - خلي محاولة تشغيل الصوت زي قبل
+            window.addEventListener('scroll', function() {
+                if (mainContent.getAttribute('aria-hidden') === 'false') {
+                    if (audio.paused && window.scrollY > 100) {
+                        audio.play().catch(e => console.log('التشغيل التلقائي غير مسموح'));
+                    }
+                }
+            });
+
+            // إنشاء القلوب عند تحميل الصفحة لو كانت مفتوحة
+            window.addEventListener('load', function() {
+                if (sessionStorage.getItem('siteUnlocked') === '1') createHearts();
+            });
+        })();
     </script>
 </body>
-            </html>
+</html>
