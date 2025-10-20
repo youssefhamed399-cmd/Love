@@ -29,7 +29,6 @@
             justify-content: center;
             min-height: 100vh;
             padding: 20px;
-            animation: fadeIn 0.8s ease;
         }
 
         .active {
@@ -45,11 +44,13 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
             max-width: 400px;
             width: 90%;
+            animation: fadeIn 0.8s ease;
         }
 
         .lock-icon {
             font-size: 4em;
             margin-bottom: 20px;
+            animation: heartbeat 2s ease-in-out infinite;
         }
 
         .password-title {
@@ -147,6 +148,7 @@
         .heart-icon {
             font-size: 4em;
             margin-bottom: 20px;
+            animation: heartbeat 2s ease-in-out infinite;
         }
 
         .title {
@@ -176,6 +178,7 @@
 
         .message p:hover {
             background: rgba(255, 255, 255, 0.15);
+            transform: translateX(-5px);
         }
 
         .signature {
@@ -184,6 +187,7 @@
             color: #fff;
             font-family: 'Dancing Script', cursive;
             font-weight: bold;
+            animation: pulse 2s infinite;
         }
 
         .love-photo {
@@ -198,6 +202,7 @@
             font-size: 5em;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             border: 5px solid rgba(255, 255, 255, 0.4);
+            animation: float 3s ease-in-out infinite;
         }
 
         .video-container {
@@ -229,7 +234,25 @@
             font-size: 1.2em;
         }
 
-        /* أنيميشن بسيطة */
+        /* الخلفيات المتحركة */
+        .bg-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5em;
+            opacity: 0;
+            animation: floatHearts 8s linear infinite;
+        }
+
+        /* أنيميشن خفيفة */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -247,6 +270,38 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes floatHearts {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) translateX(0px) rotate(0deg);
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) translateX(100px) rotate(180deg);
             }
         }
 
@@ -286,6 +341,9 @@
     </style>
 </head>
 <body>
+    <!-- الخلفية المتحركة -->
+    <div class="bg-hearts" id="heartsContainer"></div>
+    
     <!-- شاشة الباسورد -->
     <div id="passwordScreen" class="screen active">
         <div class="password-container">
@@ -386,6 +444,25 @@
         function showMessageScreen() {
             document.getElementById('passwordScreen').classList.remove('active');
             document.getElementById('messageScreen').classList.add('active');
+            createHearts();
+        }
+
+        // إنشاء القلوب الطائرة
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            const hearts = ['💖', '💕', '💗', '💓', '💞', '💘', '💝', '❤️'];
+            
+            // عدد أقل من القلوب لتجنب التحميل الزائد
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = (Math.random() * 5) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                
+                container.appendChild(heart);
+            }
         }
         
         // السماح بالإدخال بالإنتر
@@ -394,6 +471,11 @@
                 checkPassword();
             }
         });
+
+        // إنشاء القلوب عند تحميل الصفحة
+        window.onload = function() {
+            createHearts();
+        }
     </script>
 </body>
-                                                                 </html>
+</html>
